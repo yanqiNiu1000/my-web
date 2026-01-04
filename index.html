@@ -8,3 +8,55 @@
     <h1>Hello GitHub Pages</h1>
   </body>
 </html>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>我的网页</title>
+
+    <!-- ===== 可视化埋点：head 必传 ===== -->
+    <meta name="data-aspm" content="a2" /> <!-- A位：你给的是 a2（必传） -->
+    <meta
+      name="visual-spm"
+      content="appId=VSL10000003^remote=true^appType=H5_APP^env=PROD"
+    /><!-- 必传 -->
+    <meta name="data-bizType" content="H5behavior" /><!-- 必传 -->
+  </head>
+
+  <!-- ===== spm 的 b 位：在 body 上配置（示例写 b1，你也可以改成你控制台给这个页面配置的 b 位） ===== -->
+  <body data-aspm="b1">
+    <h1>Hello GitHub Pages</h1>
+
+    <!-- ===== spm 的 c 位：页面区域 ===== -->
+    <div data-aspm="c1001" style="padding: 12px; border: 1px solid #ddd;">
+      <h2>区域 c1001</h2>
+
+      <!-- ===== spm 的 d 位：具体点击坑位（用 data-aspm-click） ===== -->
+      <button data-aspm-click="c1001.d2001">按钮 d2001</button>
+      <a href="#demo" data-aspm-click="c1001.d2002" style="margin-left: 12px;">链接 d2002</a>
+    </div>
+
+    <!-- ===== 可视化埋点：body 末尾初始化（必传项） ===== -->
+    <script>
+      window._to = {
+        autoLogPv: true,                 // 必传 :contentReference[oaicite:3]{index=3}
+        expoOnce: true,                  // 非必传（可不写） :contentReference[oaicite:4]{index=4}
+        bizScenario: "MYTEST_BIZSCENARIO", // 必传，且不可更改 :contentReference[oaicite:5]{index=5}
+
+        // 必传：mdata 里 3 个值是“埋点控件ID”（不是你的应用ID） :contentReference[oaicite:6]{index=6}
+        mdata: {
+          appId: "TODO_埋点控件ID_appId",
+          tenantId: "TODO_埋点控件ID_tenantId",
+          workspaceId: "TODO_埋点控件ID_workspaceId"
+        },
+
+        // 必传：上报地址 & 拉取配置地址（host 是你们的埋点服务域名） :contentReference[oaicite:7]{index=7}
+        server: "https://TODO_HOST/loggw/mvetLogGet.do",
+        remoteConfigServer: "https://TODO_HOST/openapi/config/h5/pullTrack"
+      };
+    </script>
+
+    <!-- 必传：引入埋点 js（同一个 host） :contentReference[oaicite:8]{index=8} -->
+    <script src="https://TODO_HOST/web/origin-tracert.js"></script>
+  </body>
+</html>
